@@ -5,6 +5,7 @@ public class PickupObject : MonoBehaviour
     public float pickupRadius = 1f; // Radius, innerhalb dessen der Gegenstand aufgenommen werden kann
     public AudioClip pickupSound; // Der Audioclip, der beim Aufnehmen des Gegenstands abgespielt wird
     public float volumeMultiplier = 1.5f; // Multiplikator zur Anpassung der Lautstärke
+    public InventoryManager inventoryManager; // Referenz auf das InventoryManager-Skript
 
     private AudioSource playerAudioSource;
 
@@ -34,7 +35,7 @@ public class PickupObject : MonoBehaviour
                 switch (objectName)
                 {
                     case "Edding":
-                    case "Crown":
+                    case "BKCrown":
                     case "VomitPowder":
                         // Gegenstand aufnehmen
                         Destroy(gameObject);
@@ -48,6 +49,16 @@ public class PickupObject : MonoBehaviour
                         else
                         {
                             Debug.LogError("Player Audio Source oder Pickup Sound ist nicht zugewiesen!");
+                        }
+
+                        // Update des Inventars
+                        if (inventoryManager != null)
+                        {
+                            inventoryManager.UpdateInventory(objectName);
+                        }
+                        else
+                        {
+                            Debug.LogError("Inventory Manager ist nicht zugewiesen!");
                         }
                         break;
                     default:

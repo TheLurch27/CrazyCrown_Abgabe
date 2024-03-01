@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // Starte die Coroutine zum Blockieren der Spielerbewegung
-        StartCoroutine(BlockPlayerMovementForDuration(75f)); // 75 Sekunden
+        // StartCoroutine(BlockPlayerMovementForDuration(75f)); // 75 Sekunden
     }
 
     void Update()
@@ -92,12 +92,12 @@ public class CharacterController : MonoBehaviour
         animator.SetBool("isSneaking", isSneaking);
     }
 
-    IEnumerator BlockPlayerMovementForDuration(float duration)
-    {
-        blockPlayerInput = true; // Blockiere die Spielerbewegung
-
-        yield return new WaitForSeconds(duration); // Wartezeit in Sekunden
-
-        blockPlayerInput = false; // Aktiviere die Spielerbewegung nach Ablauf der Wartezeit
-    }
+    // IEnumerator BlockPlayerMovementForDuration(float duration)
+    // {
+    //     blockPlayerInput = true; // Blockiere die Spielerbewegung
+    // 
+    //     yield return new WaitForSeconds(duration); // Wartezeit in Sekunden
+    // 
+    //     blockPlayerInput = false; // Aktiviere die Spielerbewegung nach Ablauf der Wartezeit
+    // }
 }

@@ -12,6 +12,10 @@ TagManager:
   - Salute
   - Butler
   - Welcome
+  - BKCrown_UI
+  - VomitPowder_UI
+  - Edding_UI
+  - TaskTrigger
   layers:
   - Default
   - TransparentFX
