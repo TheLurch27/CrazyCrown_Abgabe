@@ -28,7 +28,7 @@ public class PickupObject : MonoBehaviour
         if (player != null)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer <= pickupRadius && Input.GetKeyDown(KeyCode.E))
+            if (distanceToPlayer <= pickupRadius && Input.GetKeyDown(KeyCode.C))
             {
                 string objectName = gameObject.tag;
 

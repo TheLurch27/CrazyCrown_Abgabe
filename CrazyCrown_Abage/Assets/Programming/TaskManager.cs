@@ -1,89 +1,73 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    public string playerTag = "Player";
-    public string taskTriggerTag = "TaskTrigger";
-    public string eddingUITag = "Edding_UI";
-    public string portraitNormalTag = "Portrait_Normal";
-    public string portraitSmearTag = "Portrait_Smear";
+    [Header("Task")]
+    public GameObject player;
+    public GameObject eddingUI;
+    public GameObject taskTrigger;
+    public GameObject normalPortrait;
+    public GameObject smearPortrait;
+    public AudioClip goAwayAudio;
 
-    public float interactionDuration = 5f;
+    private bool conditionMet = false;
 
-    private bool isInteracting = false;
-    private float interactionTimer = 0f;
+    [Header("AfterTaskAudio")]
+    public AudioClip eddingQueenReaction;
+    public GameObject eddingQueenReactionTrigger;
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    void Update()
     {
-        if (other.CompareTag(playerTag))
+        if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && eddingUI.CompareTag("Edding_UI"))
         {
-            GameObject eddingUI = GameObject.FindGameObjectWithTag(eddingUITag);
-            if (eddingUI != null)
-            {
-                // Der Spieler hat das Edding-UI im Inventar
-                if (Input.GetKeyDown(KeyCode.E))
+            TogglePortraits();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TaskTrigger") && eddingUI.activeSelf)
+        {
+            conditionMet = true;
+        }
+
+        // if (collision.gameObject.CompareTag("eddingQueenReactionTrigger") && 
+        // {
+        //     
+        // }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TaskTrigger"))
+        {
+            conditionMet = false;
+        }
+    }
+
+    private void TogglePortraits()
+    {
+        switch (normalPortrait.activeSelf)
+        {
+            case true:
+                normalPortrait.SetActive(false);
+                smearPortrait.SetActive(true);
+                Destroy(taskTrigger);
+                Destroy(eddingUI);
+                if (goAwayAudio != null)
                 {
-                    StartInteraction();
+                    if (smearPortrait.activeSelf)
+                    {
+                        player.GetComponent<AudioSource>().PlayOneShot(goAwayAudio);
+                    }
                 }
-            }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (isInteracting)
-        {
-            if (other.CompareTag(playerTag) && Input.GetKey(KeyCode.E))
-            {
-                interactionTimer += Time.deltaTime;
-                Debug.Log("Interacting: " + interactionTimer.ToString("F1") + "s");
-
-                if (interactionTimer >= interactionDuration)
-                {
-                    // Interaktion abgeschlossen
-                    SwitchPortraitTags();
-                    ResetInteraction();
-                }
-            }
-            else
-            {
-                Debug.Log("Interaction reset.");
-                ResetInteraction();
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag(playerTag))
-        {
-            Debug.Log("Interaction reset.");
-            ResetInteraction();
-        }
-    }
-
-    private void StartInteraction()
-    {
-        isInteracting = true;
-        interactionTimer = 0f;
-        Debug.Log("Interaction started.");
-    }
-
-    private void ResetInteraction()
-    {
-        isInteracting = false;
-        interactionTimer = 0f;
-    }
-
-    private void SwitchPortraitTags()
-    {
-        GameObject portraitNormal = GameObject.FindGameObjectWithTag(portraitNormalTag);
-        GameObject portraitSmear = GameObject.FindGameObjectWithTag(portraitSmearTag);
-
-        if (portraitNormal != null && portraitSmear != null)
-        {
-            portraitNormal.SetActive(false);
-            portraitSmear.SetActive(true);
+                break;
+            case false:
+                normalPortrait.SetActive(true);
+                smearPortrait.SetActive(false);
+                break;
         }
     }
 }
