@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c92c3a79bc16ad84b8c50ff8378d7e73
+guid: ca4d48ab5e1e4f840ac687b2c10eff6a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Table and Chair_0
+      name: Tea_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1234
-        width: 1295
-        height: 54
+        x: 322
+        y: 466
+        width: 1100
+        height: 509
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,71 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d3885686d7cff6449e4e8acf5f4f7dc
-      internalID: 2027253893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Table and Chair_1
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 31
-        width: 667
-        height: 1055
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59e4dc69b2afa8c418bee1cfd2cb8db2
-      internalID: -1217603206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Table and Chair_2
-      rect:
-        serializedVersion: 2
-        x: 787
-        y: 14
-        width: 759
-        height: 668
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44c752897395ba3429be2ba6e0d2e1b0
-      internalID: 1488171135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Table and Chair_3
-      rect:
-        serializedVersion: 2
-        x: 1741
-        y: 14
-        width: 606
-        height: 668
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dac4d42c564c05243bfa6ae27b246ff0
-      internalID: -1224703372
+      spriteID: 7bfccc7e2bf811549856697d2c03c789
+      internalID: -143741442
       vertices: []
       indices: 
       edges: []
@@ -230,10 +167,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Table and Chair_0: 2027253893
-      Table and Chair_1: -1217603206
-      Table and Chair_2: 1488171135
-      Table and Chair_3: -1224703372
+      Tea_0: -143741442
+      Tea_1: -977197574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1172199527751127312}
   - component: {fileID: 4595748396750889238}
   - component: {fileID: 8860175944701985099}
-  - component: {fileID: 6886017646076557895}
   m_Layer: 3
   m_Name: Queen
   m_TagString: Untagged
@@ -101,9 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca68477ae0ac444e885eeb0eba80808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  moveSpeed: 2
+  leftWall: {fileID: 0}
+  rightWall: {fileID: 0}
+  triggerCollider: {fileID: 0}
 --- !u!95 &1172199527751127312
 Animator:
   serializedVersion: 5
@@ -197,25 +197,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.74, y: 13.17}
   m_EdgeRadius: 0
---- !u!195 &6886017646076557895
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884413178649690532}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 4.37
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 13.17
-  m_BaseOffset: 6.585
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
