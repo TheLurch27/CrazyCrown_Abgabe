@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9808cb090de744f9aa8f087dda590a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Hallway
+  sceneToLoad: Hallway
 --- !u!212 &1827763823
 SpriteRenderer:
   m_ObjectHideFlags: 0

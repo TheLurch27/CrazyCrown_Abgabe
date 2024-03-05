@@ -4,7 +4,12 @@ public class DoorController : MonoBehaviour
 {
     public string sceneToLoad; // Name der Szene, die geladen werden soll
 
+    public GameObject eddingImage;
+    public GameObject vomitPowderImage;
+    public GameObject bkCrownImage;
+
     private bool playerInRange = false;
+    private bool roomSwitched = false; // Variable, um den Raumwechsel zu verfolgen
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,16 +31,23 @@ public class DoorController : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !roomSwitched)
         {
-            LoadScene();
+            if (eddingImage.activeSelf || vomitPowderImage.activeSelf || bkCrownImage.activeSelf)
+            {
+                Debug.Log("No scene change because one of the special items is active.");
+            }
+            else
+            {
+                roomSwitched = true; // Raumwechsel markieren
+                LoadScene();
+            }
         }
     }
 
     private void LoadScene()
     {
         Debug.Log("Loading scene: " + sceneToLoad);
-
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 }

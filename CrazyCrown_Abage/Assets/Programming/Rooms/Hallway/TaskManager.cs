@@ -3,20 +3,14 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public GameObject normalPortrait; // Referenz auf das normale Portrait UI-Element
-    public GameObject smearPortrait; // Referenz auf das verschmierte Portrait UI-Element
-    public Collider2D triggerPoint; // Referenz auf den Collider des TaskTriggers
-
-    public AudioClip audioClip; // Referenz auf die AudioClip-Datei im Inspector ziehen
-    private AudioSource audioSource; // Referenz auf die AudioSource
-
+    public GameObject normalPortrait;
+    public GameObject smearPortrait;
+    public Collider2D triggerPoint;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     public GameObject queenReactionTrigger;
-
-    public float volumeMultiplier = 1.0f; // Multiplikator für die Lautstärke
-
-    private bool portraitsSwapped = false; // Flag, um zu verfolgen, ob die Porträts bereits getauscht wurden
-
-    private bool queenReactionTriggered = false;
+    public float volumeMultiplier = 1.0f;
+    private bool portraitsSwapped = false;
 
     private void Start()
     {

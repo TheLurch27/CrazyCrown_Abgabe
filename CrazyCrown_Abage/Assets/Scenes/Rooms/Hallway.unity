@@ -257,6 +257,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: DiningRoom
+  eddingImage: {fileID: 314943152}
+  vomitPowderImage: {fileID: 856817529}
+  bkCrownImage: {fileID: 1427187944}
 --- !u!61 &61216253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -766,6 +769,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &314943152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2252402207893481414, guid: d7340550605c73b40b796df9c8b875b4, type: 3}
+  m_PrefabInstance: {fileID: 1339373502523243192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &327799316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1152,11 @@ Transform:
   - {fileID: 215175746}
   m_Father: {fileID: 1670534357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &856817529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 921685977717428841, guid: d7340550605c73b40b796df9c8b875b4, type: 3}
+  m_PrefabInstance: {fileID: 1339373502523243192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867004582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: ThroneRoom
+  eddingImage: {fileID: 314943152}
+  vomitPowderImage: {fileID: 856817529}
+  bkCrownImage: {fileID: 1427187944}
 --- !u!61 &1012298549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1937,6 +1953,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1427187944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8927097329393791669, guid: d7340550605c73b40b796df9c8b875b4, type: 3}
+  m_PrefabInstance: {fileID: 1339373502523243192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1442602842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,7 +2954,7 @@ PrefabInstance:
       objectReference: {fileID: 500236297}
     - target: {fileID: 865912419214980783, guid: 41c6f3ab087c5f24b91cde1a46b10992, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430340697491966038, guid: 41c6f3ab087c5f24b91cde1a46b10992, type: 3}
       propertyPath: m_Name
