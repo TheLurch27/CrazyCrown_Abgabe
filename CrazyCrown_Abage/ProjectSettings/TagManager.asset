@@ -16,14 +16,19 @@ TagManager:
   - VomitPowder_UI
   - Edding_UI
   - TaskTrigger
+  - Wall
+  - LeaveTrigger
+  - Door
+  - Ground
+  - Waypoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NPC
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

@@ -1,73 +1,28 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    [Header("Task")]
-    public GameObject player;
-    public GameObject eddingUI;
-    public GameObject taskTrigger;
-    public GameObject normalPortrait;
-    public GameObject smearPortrait;
-    public AudioClip goAwayAudio;
+    public GameObject normalPortrait; // Referenz auf das normale Portrait UI-Element
+    public GameObject smearPortrait; // Referenz auf das verschmierte Portrait UI-Element
+    public Collider2D triggerPoint; // Referenz auf den Collider des TaskTriggers
+    public AudioClip audioClip; // Referenz auf die AudioSource
 
-    private bool conditionMet = false;
+    private bool portraitsSwapped = false; // Flag, um zu verfolgen, ob die Porträts bereits getauscht wurden
 
-    [Header("AfterTaskAudio")]
-    public AudioClip eddingQueenReaction;
-    public GameObject eddingQueenReactionTrigger;
-
-
-    void Update()
+    private void Update()
     {
-        if (player.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && eddingUI.CompareTag("Edding_UI"))
+        // Überprüfe, ob der Spieler sich im Bereich des triggerPoint befindet und die E-Taste gedrückt wird
+        if (Input.GetKeyDown(KeyCode.E) && triggerPoint.IsTouchingLayers(LayerMask.GetMask("Player")))
         {
-            TogglePortraits();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("TaskTrigger") && eddingUI.activeSelf)
-        {
-            conditionMet = true;
-        }
-
-        // if (collision.gameObject.CompareTag("eddingQueenReactionTrigger") && 
-        // {
-        //     
-        // }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("TaskTrigger"))
-        {
-            conditionMet = false;
-        }
-    }
-
-    private void TogglePortraits()
-    {
-        switch (normalPortrait.activeSelf)
-        {
-            case true:
+            // Überprüfe, ob der Edding aktiv ist
+            if (InventoryManager.instance != null && InventoryManager.instance.eddingImage.activeSelf)
+            {
+                AudioSource.PlayClipAtPoint(audioClip, transform.position);
+                // Tausche die Porträts
                 normalPortrait.SetActive(false);
                 smearPortrait.SetActive(true);
-                Destroy(taskTrigger);
-                Destroy(eddingUI);
-                if (goAwayAudio != null)
-                {
-                    if (smearPortrait.activeSelf)
-                    {
-                        player.GetComponent<AudioSource>().PlayOneShot(goAwayAudio);
-                    }
-                }
-                break;
-            case false:
-                normalPortrait.SetActive(true);
-                smearPortrait.SetActive(false);
-                break;
+                portraitsSwapped = true; // Setze das Flag, um anzuzeigen, dass die Porträts getauscht wurden
+            }
         }
     }
 }

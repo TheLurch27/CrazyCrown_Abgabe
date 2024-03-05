@@ -31,24 +31,28 @@ public class CharacterController : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            // Bewegung nach links und rechts
-            Vector2 movement = new Vector2(horizontalInput, 0f);
-
-            // Geschwindigkeit basierend auf Input und Zustand setzen
-            float speed = isSneaking ? sneakSpeed : walkSpeed;
-            rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-
-            // Animationen aktualisieren
-            UpdateAnimation(horizontalInput, verticalInput);
-
-            // Spiegeln des Charakterbilds
-            if (horizontalInput < 0)
+            // Wenn der Spieler nicht salutiert, kann er sich bewegen
+            if (!isSaluting)
             {
-                spriteRenderer.flipX = true;
-            }
-            else if (horizontalInput > 0)
-            {
-                spriteRenderer.flipX = false;
+                // Bewegung nach links und rechts
+                Vector2 movement = new Vector2(horizontalInput, 0f);
+
+                // Geschwindigkeit basierend auf Input und Zustand setzen
+                float speed = isSneaking ? sneakSpeed : walkSpeed;
+                rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+
+                // Animationen aktualisieren
+                UpdateAnimation(horizontalInput, verticalInput);
+
+                // Spiegeln des Charakterbilds
+                if (horizontalInput < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (horizontalInput > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
 
             // Salutieren
@@ -56,11 +60,15 @@ public class CharacterController : MonoBehaviour
             {
                 isSaluting = true;
                 animator.SetBool("isSaluting", true);
+                animator.SetBool("isWalking", false);
+                // Blockiere die Bewegung, wenn der Spieler salutiert
+                rb.velocity = Vector2.zero;
             }
             if (Input.GetKeyUp(KeyCode.S))
             {
                 isSaluting = false;
                 animator.SetBool("isSaluting", false);
+                animator.SetBool("isWalking", true);
             }
         }
     }

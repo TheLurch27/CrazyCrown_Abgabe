@@ -15,9 +15,27 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8cf58a52f9120114aaf6381daf7ea398
   - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 68842fe876e53de4f99e250e4ce01da8
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 91caf05baa3c73041b91793e11c98687
+  - enabled: 1
+    path: Assets/Scenes/KeyAssignments.unity
+    guid: 08d00c6d33be884429e05c0bf935de29
+  - enabled: 1
     path: Assets/Scenes/Disclaimer.unity
     guid: 401a75312c52c8e449bb868877d7274a
   - enabled: 1
-    path: Assets/Scenes/Hallway.unity
+    path: Assets/Scenes/Rooms/Hallway.unity
     guid: 0dbcfb6c86b872342b62d86edbd288fa
+  - enabled: 1
+    path: Assets/Scenes/Rooms/DiningRoom.unity
+    guid: 32ad16e3c3b8b384691ffd2b7689c4d4
+  - enabled: 1
+    path: Assets/Scenes/Rooms/ThroneRoom.unity
+    guid: 2d7a54583a1372f41b2ccb1a95290461
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 557e5b4369ceee7428525bb6bcc89203
   m_configObjects: {}
