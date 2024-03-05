@@ -1,4 +1,3 @@
-// CharacterController.cs
 using UnityEngine;
 using System.Collections;
 
@@ -20,7 +19,6 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Starte die Coroutine zum Blockieren der Spielerbewegung
         // StartCoroutine(BlockPlayerMovementForDuration(75f)); // 75 Sekunden
     }
 

@@ -19,6 +19,8 @@ public class ButlerController : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
 
+    private Rigidbody2D rb;
+
     private void Start()
     {
         initialPosition = transform.position;

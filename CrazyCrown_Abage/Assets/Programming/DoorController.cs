@@ -1,41 +1,41 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public string destinationSceneName; // Name der Zielszene
-    public string previousSceneName; // Name der vorherigen Szene
-    public bool preserveSceneState = true; // Soll der Zustand der vorherigen Szene erhalten bleiben?
+    public string sceneToLoad; // Name der Szene, die geladen werden soll
 
-    private void OnTriggerEnter(Collider other)
+    private bool playerInRange = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger zone.");
-            TryLoadScene();
+            playerInRange = true;
+            Debug.Log("Player entered the door trigger zone.");
         }
     }
 
-    private void TryLoadScene()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("E key pressed.");
-            if (preserveSceneState)
-            {
-                // Speichere den Namen der aktuellen Szene
-                previousSceneName = SceneManager.GetActiveScene().name;
-                Debug.Log("Previous scene name: " + previousSceneName);
-            }
-
-            // Lade die Zielszene
-            SceneManager.LoadScene(destinationSceneName);
+            playerInRange = false;
+            Debug.Log("Player exited the door trigger zone.");
         }
     }
 
-    public void LoadPreviousScene()
+    private void Update()
     {
-        // Lade die vorherige Szene
-        SceneManager.LoadScene(previousSceneName);
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            LoadScene();
+        }
+    }
+
+    private void LoadScene()
+    {
+        Debug.Log("Loading scene: " + sceneToLoad);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 }

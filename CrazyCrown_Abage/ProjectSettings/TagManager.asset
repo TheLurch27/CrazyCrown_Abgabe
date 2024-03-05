@@ -21,6 +21,8 @@ TagManager:
   - Door
   - Ground
   - Waypoint
+  - Queen
+  - QueenReaction
   layers:
   - Default
   - TransparentFX
