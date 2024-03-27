@@ -16,6 +16,7 @@ TagManager:
   - VomitPowder_UI
   - Edding_UI
   - TaskTrigger
+<<<<<<< Updated upstream
   - Wall
   - LeaveTrigger
   - Door
@@ -23,11 +24,19 @@ TagManager:
   - Waypoint
   - Queen
   - QueenReaction
+=======
+  - BK_Crown
+  - VomitPowder
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+<<<<<<< Updated upstream
   - NPC
+=======
+  - Player
+>>>>>>> Stashed changes
   - Water
   - UI
   - Player

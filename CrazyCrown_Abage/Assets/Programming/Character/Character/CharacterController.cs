@@ -3,27 +3,32 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public float sneakSpeed = 2.5f;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    public float moveSpeed = 5f;
+    public float crouchSpeed = 2f;
+    
+    private float walkSpeed = 5f;
 
-    private bool isWalking = false;
-    private bool isSneaking = false;
-    private bool isSaluting = false;
-    private Rigidbody2D rb;
+    private bool isWalking;
+    private bool isSneaking;
+    private bool isInteracting;
+    private bool isSaluting;
 
-    private bool blockPlayerInput = false;
+    private Animator animator;
 
     void Start()
     {
+<<<<<<< Updated upstream:CrazyCrown_Abage/Assets/Programming/Character/Character/CharacterController.cs
         rb = GetComponent<Rigidbody2D>();
 
         // StartCoroutine(BlockPlayerMovementForDuration(75f)); // 75 Sekunden
+=======
+        animator = GetComponent<Animator>();
+>>>>>>> Stashed changes:CrazyCrown_Abage/Assets/Programming/Character/CharacterController.cs
     }
 
     void Update()
     {
+<<<<<<< Updated upstream:CrazyCrown_Abage/Assets/Programming/Character/Character/CharacterController.cs
         if (!blockPlayerInput)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -68,36 +73,56 @@ public class CharacterController : MonoBehaviour
                 animator.SetBool("isSaluting", false);
                 animator.SetBool("isWalking", true);
             }
-        }
-    }
+=======
+        float moveInput = Input.GetAxisRaw("Horizontal");
 
-    void UpdateAnimation(float horizontalInput, float verticalInput)
-    {
-        // Bewegungsanimation
-        if (horizontalInput != 0f)
+        if (Input.GetKey(KeyCode.LeftShift) && !isSaluting && !isInteracting)
+        {
+            moveSpeed = crouchSpeed;
+            isSneaking = true;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+            isSneaking = false;
+        }
+
+        // **Änderung:** Bewegung wird beim Salutieren oder Interagieren unterbunden
+        if (isSaluting || isInteracting)
+        {
+            moveInput = 0f;
+>>>>>>> Stashed changes:CrazyCrown_Abage/Assets/Programming/Character/CharacterController.cs
+        }
+
+        if (moveInput != 0)
         {
             isWalking = true;
-            animator.SetBool("isWalking", true);
+            transform.Translate(new Vector3(moveInput * moveSpeed * Time.deltaTime, 0f, 0f));
         }
         else
         {
             isWalking = false;
-            animator.SetBool("isWalking", false);
         }
 
-        // Zustand für das Schleichen aktualisieren
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            isSneaking = true;
+            isSaluting = true;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.S))
         {
-            isSneaking = false;
+            isSaluting = false;
         }
 
-        animator.SetBool("isSneaking", isSneaking);
-    }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isInteracting = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            isInteracting = false;
+        }
 
+<<<<<<< Updated upstream:CrazyCrown_Abage/Assets/Programming/Character/Character/CharacterController.cs
     // IEnumerator BlockPlayerMovementForDuration(float duration)
     // {
     //     blockPlayerInput = true; // Blockiere die Spielerbewegung
@@ -107,3 +132,12 @@ public class CharacterController : MonoBehaviour
     //     blockPlayerInput = false; // Aktiviere die Spielerbewegung nach Ablauf der Wartezeit
     // }
 }
+=======
+        // **Änderung:** Animator-Parameter werden beim Salutieren oder Interagieren aktualisiert
+        animator.SetBool("isWalking", isWalking && !isSaluting && !isInteracting);
+        animator.SetBool("isSneaking", isSneaking && !isSaluting && !isInteracting);
+        animator.SetBool("isInteracting", isInteracting);
+        animator.SetBool("isSaluting", isSaluting);
+    }
+}
+>>>>>>> Stashed changes:CrazyCrown_Abage/Assets/Programming/Character/CharacterController.cs
